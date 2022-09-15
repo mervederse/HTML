@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kronometre</title>
+    <style type="text/css">
+body {
+  background: gainsboro;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.zamanlayıcı {
+  text-align: center;
+}
+
+#zaman {
+  font-size: 50px;
+}
+
+.butonlar {
+  margin: 10px 0;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  filter: grayscale(0.5);
+}
+button:focus {
+  outline: none;
+}
+
+#basla_btn {
+  background: green;
+}
+#dur_btn {
+  background: blue;
+  display: none;
+}
+#reset_btn {
+  background: red;
+  display: none;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="zamanlayıcı">
+      <h1>Kronometre</h1>
+
+      <div id="zaman">00:00:00</div>
+
+      <div class="butonlar">
+        <button id="basla_btn" onclick="basla()">BASLA</button>
+        <button id="dur_btn" onclick="dur()">DUR</button>
+        <button id="reset_btn" onclick="reset()">RESET</button>
+      </div>
+    </div>
+
+    <!---JS KODU-->
+    <script defer>
+        const timer = document.querySelector('#zaman');
+const basla_btn = document.querySelector('#basla_btn');
+const dur_btn = document.querySelector('#dur_btn');
+const reset_btn = document.querySelector('#reset_btn');
+
+let zaman = 0,
+  interval;
+
+function baslama() {
+  zaman += 1;
+  timer.innerHTML = hesapla(zaman);
+}
+
+function basla() {
+  interval = setInterval(baslama, 1000);
+  sklaBtn([basla_btn]);
+  basBtn([dur_btn, reset_btn]);
+}
+
+function dur() {
+  if (interval) {
+    clearInterval(interval);
+    interval = null;
+    dur_btn.innerHTML = 'DEVAM ET';
+  } else {
+    interval = setInterval(baslama, 1000);
+    dur_btn.innerHTML = 'DUR';
+  }
+}
+
+function reset() {
+  clearInterval(interval);
+  interval = null;
+  dur_btn.innerHTML = 'DUR';
+  zaman = 0;
+  timer.innerHTML = hesapla(zaman);
+  sklaBtn([dur_btn, reset_btn]);
+  basBtn([basla_btn]);
+}
+
+function hesapla(zaman) {
+  let saat = Math.floor(zaman / 3600);
+  let dakika = Math.floor((zaman - saat * 3600) / 60);
+  let saniye = zaman - saat * 3600 - dakika * 60;
+
+  saat = `${saat}`.padStart(2, '0');
+  dakika= `${dakika}`.padStart(2, '0');
+  saniye = `${saniye}`.padStart(2, '0');
+
+  return saat + ':' + dakika + ':' + saniye;
+}
+
+function basBtn(btnArr) {
+  btnArr.forEach((btn) => (btn.style.display = 'inline-block'));
+}
+function sklaBtn(btnArr) {
+  btnArr.forEach((btn) => (btn.style.display = 'none'));
+}
+
+    </script>
+  </body>
+</html>

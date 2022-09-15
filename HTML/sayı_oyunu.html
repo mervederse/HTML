@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SAYI TAHMİN ETMECE</title>
+        <meta charset="utf-8">
+        <style>
+            #baslik{
+                text-align: center;
+                font-size:34px;
+                font-family: monospace;
+                font-variant: small-caps;
+                color: lime;
+            }
+            #slogan{
+                text-align: center;
+                font-size: 22px;
+                font-family:fantasy;
+                color: orangered;
+            }
+            #button{
+                text-align: center;
+                
+            }
+            input[type=button] {
+                background-color:rgb(123, 112, 218);
+                border: none;
+                color: white;
+                padding: 16px 32px;
+                text-decoration: none;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            input[type=text]{
+                background-color: skyblue;
+                border: none;
+                color: white;
+                padding: 16px 32px;
+                text-decoration: none;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 id="baslik"><marquee behavior="alternate" bgColor="#0066ff">SAYI TAHMİN ETMECE</marquee></h2>
+        <div id="slogan">
+            <p> <marquee behavior=alternate> Hazır Mısın ? <br> Haydi Başlayalım !</marquee> </p>
+        </div>
+
+
+        <div id="button">
+        <input type="button" id="baslat" value="Oyuna Başla">
+        <input type="button" id="tahmin" value="Tahmin Et" disabled> <br>
+        <input type="text" id="sayi" placeholder="1 ile 99 arası bir sayı girin.">
+        </div>
+        
+        <script defer>
+            var rsayi , sayac , deneme = 5;
+            var baslat = document.querySelector("#baslat");
+            var tahmin = document.querySelector("#tahmin");
+            var sayi = document.querySelector("#sayi");
+
+            baslat.onclick = function()
+            {
+                tahmin.disabled = false ;
+                rsayi = Math.round(Math.random() *100);
+                sayac = 0;
+                /*window.alert(rsayi);*/
+            }
+            tahmin.onclick = function()
+            {
+                sayac++;
+
+                if(rsayi!=sayi.value && sayac > deneme){
+                    window.alert("Oyun sona erdi. Doğru sayı :" + rsayi );
+                    tahmin.disabled = true;
+                }
+
+                if(rsayi ==sayi.value){
+                    window.alert("Tebrikler, doğru tahmin ettiniz");
+                }
+                else if (sayi.value > rsayi ){
+                    window.alert("Daha küçük bir sayı seçiniz.")
+                }
+                else{
+                    window.alert("Daha yüksek bir sayı seçiniz.")
+                }
+            }
+        </script>
+    </body>
+</html>
