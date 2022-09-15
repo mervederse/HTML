@@ -1,7 +1,7 @@
 # HTML
-Basit HTML Uygulamaları
+## Basit HTML Uygulamaları
 
-## Dosyanın içerisinde 3 basit HTML uygulaması bulunmaktadır.
+#### Dosyanın içerisinde 3 basit HTML uygulaması bulunmaktadır.
 
 - Kronometre
 - Sıcaklık dönüştürücü 
