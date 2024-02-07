@@ -1,8 +1,9 @@
-# HTML
-## Basit HTML Uygulamaları
+#HTML
+## Simple HTML Applications
 
-#### Dosyanın içerisinde 3 basit HTML uygulaması bulunmaktadır.
+#### There are 3 simple HTML applications in the file.
 
-- Kronometre
-- Sıcaklık dönüştürücü 
-- Sayı Oyunu
+- Stopwatch
+- Temperature transducer
+- Numbers Game
+
